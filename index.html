@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎰 皇家老虎机 - Royal Slots</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎰</text></svg>" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="lightning-flash" class="lightning-flash"></div>
+    
+    <!-- Big Win Video Overlay -->
+    <div id="video-overlay" class="video-overlay">
+      <video id="win-video" src="/Big Win.mp4" playsinline></video>
+      <div class="video-skip">点击跳过</div>
+    </div>
+
+    <div id="app">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-logo">🎰 皇家老虎机</div>
+        <div class="header-stats">
+          <div class="stat-box">
+            <span class="stat-label">余额</span>
+            <span class="stat-value" id="balance">1,000.00</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">累计赢得</span>
+            <span class="stat-value" id="total-won">0.00</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">累计投注</span>
+            <span class="stat-value" id="total-bet-display">0.00</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Win Banner -->
+      <div class="win-banner" id="win-banner">
+        <div class="win-text" id="win-text">🎊 大奖！</div>
+        <div class="win-amount" id="win-amount">+¥0.00</div>
+      </div>
+
+      <!-- Free Spins Banner -->
+      <div class="free-spins-banner" id="free-spins-banner">
+        <span id="free-spins-count">10</span> 次免费旋转！
+      </div>
+
+      <!-- Main Machine -->
+      <main class="machine" id="machine">
+        <!-- Paylines indicator (left) -->
+        <div class="paylines-left" id="paylines-left"></div>
+
+        <!-- Reels Container -->
+        <div class="reels-container">
+          <div class="reels-frame" id="reels-frame">
+            <div class="reels-window" id="reels-window">
+              <!-- Reels 0-4 -->
+              <div class="reel" id="reel-0">
+                <div class="reel-inner" id="reel-inner-0"></div>
+              </div>
+              <div class="reel" id="reel-1">
+                <div class="reel-inner" id="reel-inner-1"></div>
+              </div>
+              <div class="reel" id="reel-2">
+                <div class="reel-inner" id="reel-inner-2"></div>
+              </div>
+              <div class="reel" id="reel-3">
+                <div class="reel-inner" id="reel-inner-3"></div>
+              </div>
+              <div class="reel" id="reel-4">
+                <div class="reel-inner" id="reel-inner-4"></div>
+              </div>
+            </div>
+            <!-- Win line overlay -->
+            <canvas class="win-lines-canvas" id="win-lines-canvas"></canvas>
+          </div>
+        </div>
+
+        <!-- Paylines indicator (right) -->
+        <div class="paylines-right" id="paylines-right"></div>
+      </main>
+
+      <!-- Win Info -->
+      <div class="win-info" id="win-info">
+        <div class="win-info-content" id="win-info-content"></div>
+      </div>
+
+      <!-- Controls -->
+      <section class="controls">
+        <!-- Bet controls -->
+        <div class="bet-controls">
+          <div class="control-group">
+            <label>每线投注</label>
+            <div class="bet-adjuster">
+              <button class="btn-small" id="bet-down">−</button>
+              <span class="bet-value" id="bet-per-line">1.00</span>
+              <button class="btn-small" id="bet-up">+</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>支付线数</label>
+            <div class="bet-adjuster">
+              <button class="btn-small" id="lines-down">−</button>
+              <span class="bet-value" id="lines-count">20</span>
+              <button class="btn-small" id="lines-up">+</button>
+            </div>
+          </div>
+          <div class="control-group total-bet-group">
+            <label>总投注</label>
+            <span class="total-bet-value" id="total-bet">20.00</span>
+          </div>
+        </div>
+
+        <!-- Spin buttons -->
+        <div class="spin-controls">
+          <button class="btn-secondary" id="btn-paytable">赔付表</button>
+          <button class="btn-spin" id="btn-spin">
+            <span class="spin-icon">▶</span>
+            <span>旋转</span>
+          </button>
+          <button class="btn-secondary" id="btn-auto">自动</button>
+          <button class="btn-secondary" id="btn-turbo">⚡ 加速</button>
+        </div>
+
+        <!-- Max bet -->
+        <div class="extra-controls">
+          <button class="btn-outline" id="btn-max-bet">最大投注</button>
+          <button class="btn-outline" id="btn-add-credits">充值 +1000</button>
+        </div>
+      </section>
+
+      <!-- RTP indicator -->
+      <div class="rtp-info">
+        理论RTP: <strong>96%</strong> &nbsp;|&nbsp; 20条支付线 &nbsp;|&nbsp; 5×3 卷轴
+      </div>
+    </div>
+
+    <!-- Paytable Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal" id="paytable-modal">
+        <div class="modal-header">
+          <h2>📋 赔付表</h2>
+          <button class="modal-close" id="modal-close">✕</button>
+        </div>
+        <div class="modal-body" id="paytable-content"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
